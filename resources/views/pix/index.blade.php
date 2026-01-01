@@ -8,6 +8,7 @@
         input, button { width: 100%; padding: 10px; margin: 10px 0; }
         .qr-code { max-width: 300px; margin: 20px auto; }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.1/build/qrcode.min.js"></script>
 </head>
 <body>
     <h2>Gerar PIX</h2>
@@ -22,6 +23,7 @@
     <div id="resultado"></div>
     
     <script>
+
         document.getElementById('pixForm').onsubmit = async function(e) {
             e.preventDefault();
             
@@ -39,11 +41,16 @@
                     <p><strong>TXID:</strong> ${data.pix.txid}</p>
                     <p><strong>Valor:</strong> R$ ${data.pix.valor}</p>
                     <div class="qr-code">
-                        <img src="${data.pix.qr_code}" alt="QR Code PIX">
+                            <canvas id="canvas"> </canvas>    
                     </div>
                     <p><strong>PIX Copia e Cola:</strong></p>
                     <textarea style="width:100%;height:100px">${data.pix.copia_cola}</textarea>
                 `;
+                QRCode.toCanvas(document.getElementById('canvas'), data.pix.copia_cola, function (error) {
+                if (error) console.error(error)
+                console.log('success!');
+            })
+
             } else {
                 document.getElementById('resultado').innerHTML = `
                     <p style="color:red">❌ Erro: ${data.error || 'Erro desconhecido'}</p>

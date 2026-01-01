@@ -11,7 +11,7 @@ class EfiApiServiceProvider extends ServiceProvider
     {
         $this->app->singleton('efi.http', function () {
             return Http::withOptions([
-                'base_uri' => 'https://pix-h.api.efipay.com.br/v2/',
+                'base_uri' => 'https://pix.api.efipay.com.br/v2/',
                 'cert' => storage_path('cert/certificado.pem'),
                 'ssl_key' => storage_path('cert/chave.pem'),
                 'ssl_key_password' => env('EFI_CERT_PASSWORD'),
