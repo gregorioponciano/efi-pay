@@ -42,7 +42,7 @@ class PixController extends Controller
                 'ssl_key' => config('efi.cert_path'), // Mesmo arquivo
                 'verify' => false, // Para teste
             ])->withToken($token)
-              ->post('https://pix.api.efipay.com.br/v2/cob', $dadosPix);
+              ->post('https://pix-h.api.efipay.com.br/v2/cob', $dadosPix);
             
             if ($response->successful()) {
                 $dados = $response->json();
@@ -87,7 +87,7 @@ class PixController extends Controller
                 'ssl_key' => config('efi.cert_path'),
                 'verify' => true,
             ])->withToken($token)
-              ->get('https://pix.api.efipay.com.br/v2/cob/' . $txid);
+              ->get('https://pix-h.api.efipay.com.br/v2/cob/' . $txid);
             
             return response()->json($response->json());
             

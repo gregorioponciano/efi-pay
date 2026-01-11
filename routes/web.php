@@ -1,9 +1,3 @@
-/* 1) Usuário pede Pix */
-/* 2) Sistema pede TOKEN */
-/* 3) Sistema cria Pix */
-/* 4) Banco responde */
-/* 5) Sistema mostra QR Code */
-
 <?php
 
 use Illuminate\Support\Facades\Route;
